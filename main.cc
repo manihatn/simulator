@@ -17,7 +17,13 @@ mypacket.display_packet();
 host server;
 server.set_host(1,"server",4);
 server.send_pkt(mypacket, 2);
-server.display_send_pkt(mypacket,2);
+server.display_send_pkt(mypacket);
+
+host client;
+client.set_host(1,"client",4);
+client.recv_pkt(mypacket);
+client.display_recv_pkt(mypacket);
+
 
 return 0;
 

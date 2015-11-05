@@ -16,10 +16,25 @@ void host::send_pkt(packet pkt, int port)
 }
 
 
-void host::display_send_pkt(packet pkt, int port)
+void host::display_send_pkt(packet pkt)
 {
 	std::cout<<pkt.pno<<"\n";
 	std::cout<<pkt.name<<"\n";
-	std::cout<<port<<"\n";
+	std::cout<<pkt.size<<"\n";
 
+}
+
+
+void host::recv_pkt(packet pkt)
+{
+	this->pkt=pkt;
+
+}
+
+
+void host::display_recv_pkt(packet pkt)
+{
+	std::cout<<pkt.pno<<"\n";
+	std::cout<<pkt.name<<"\n";
+	std::cout<<pkt.size<<"\n";
 }
