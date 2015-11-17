@@ -1,5 +1,5 @@
 #include "packet.h"
-
+//#include "host.h"
 //packet::packet(){
 //
 //}
@@ -20,6 +20,21 @@ void packet::display_packet(){
 	std::cout<<this->name<<"\n";
 	std::cout<<this->size<<"\n";
 }
+
+
+void mypacket::set_src_dst(host *s1, host *c1){
+	this->s1 = s1;
+	this->c1 = c1;
+	this->size = 1460;
+}
+
+void mypacket::print_set_src_dst(){
+	std::cout<<this->s1<<"\n";
+	std::cout<<this->c1<<"\n";
+	std::cout<<this->size<<"\n";
+}
+
+
 //int main()
 //{
 //
