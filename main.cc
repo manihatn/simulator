@@ -2,6 +2,7 @@
 #include <string>
 
 #include "host.h"
+#include "switch.h"
 using namespace std;
 
 //newpacket= new packet(2,"murugan");
@@ -39,6 +40,9 @@ server.set_host(1,"server",4);
 server.send_pkt(newpacket, 2);
 //server.display_send_pkt(newpacket);
 
+l2switch switch1;
+switch1.set_l2switch(1,"TOR",4,10);
+
 host client;
 client.set_host(1,"client",4);
 client.recv_pkt(newpacket);
@@ -55,6 +59,7 @@ client.recv_pkt(newpacket);
 
 
 // link(double length, double capacity, host server, host client ) 
+
 
 mypacket sondha;
 sondha.set_src_dst(&server, &client);
