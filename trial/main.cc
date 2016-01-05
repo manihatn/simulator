@@ -1,34 +1,51 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 #include "node.h"
 #include "queue.h"
+#include "packet.h"
 
+#include <vector> // To add more number of objects(packets)
 using namespace std;
 
 
 int main()
 {
 
-l2switch sw1;
-l2switch_optical sw2;
-l2switch_hybrid sw3;
+//Packet(double sending_time, uint32_t seq_no, uint32_t pf_priority, uint32_t size);
 
-Queue Q1(1,15.4,60,1);
-Queue Q2(2,15.4,70,1);
-Queue Q3(3,15.4,80,1);
-Queue Q4(4,15.4,90,1);
-Queue Q5(5,15.4,50,1);
+// Creating a bunch of packets 
+vector<Packet> Packets;
 
-Q1.getsize();
-Q2.getsize();
-Q3.getsize();
-Q4.getsize();
-Q5.getsize();
+Packets.reserve(10000);
 
-cout << sw1.switching_latency << endl;
-cout << sw2.switching_latency << endl;
-cout << sw3.switching_latency << endl;
+for (int i = 0; i <10000; ++i)
+{
+	
+	Packets.push_back(Packet(20.4, 1, 0, 64));
+
+	int schedule = rand()%100;
+	cout << schedule << endl;
+	if(schedule < 50)
+	Packets.pop_back();
+}
+
+//Packets.pop_back();
+
+
+cout<<Packets.size()<<endl;
+cout<<"Packets popped "<< 10000-Packets.size() << endl;
+//Packet *P1 = new Packet(20.4, 1, 0, 64);
+Host H1(0, 20.4,1, 0);
+
+
+//H1.queue->enque(&P1);
+//H1.queue->enque(P1);
+//H1.Host::queue->enque(&P1);
+
+H1.queue->getsize();
+
 
 return 0;
 
