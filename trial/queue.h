@@ -39,6 +39,9 @@ class Queue {
         uint64_t spray_counter;
 
         int location;
+
+	unsigned long long start_time;
+	unsigned long long end_time;
 };
 
 

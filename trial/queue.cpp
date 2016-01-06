@@ -29,7 +29,8 @@ Queue::Queue(uint32_t id, double rate, uint32_t limit_bytes, int location) {
 }
 
 double Queue::getsize(){
-std::cout << "The size of the queue is" << limit_bytes << std::endl;
+std::cout << "The size of the queue is " << bytes_in_queue << std::endl;
+std::cout << "Number of packets dropped is " << pkt_drop << std::endl;
 }
 void Queue::enque(Packet *packet) {
     p_arrivals += 1;

@@ -27,7 +27,7 @@ class Packet {
 
     public:
         Packet(double sending_time, uint32_t seq_no, uint32_t pf_priority,
-                uint32_t size);
+                uint32_t size, unsigned long long start_time, unsigned long long end_time);
         double sending_time;
         uint32_t seq_no;
         uint32_t pf_priority;
@@ -42,6 +42,8 @@ class Packet {
         double last_enque_time;
 
         int capa_data_seq;
+	unsigned long long start_time;
+	unsigned long long end_time;
 };
 
 

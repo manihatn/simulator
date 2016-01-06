@@ -8,14 +8,30 @@ Node::Node(uint32_t id, uint32_t type) {
 
 // TODO FIX superclass constructor
 Host::Host(uint32_t id, double rate, uint32_t queue_type, uint32_t host_type) : Node(id, HOST) {
-    queue = Factory::get_queue(id, rate, 10, queue_type, 0, 0);
+    queue = Factory::get_queue(id, rate, 640, queue_type, 0, 0);
     this->host_type = host_type;
 }
+
+Link::Link(uint32_t id, uint32_t link_type) : Node(id, LINK) {
+    this->link_type = link_type;
+}
+
+CopperLink::CopperLink(uint32_t id, double rate, uint32_t type) : Link(id, COPPER_LINK) {
+    queue = Factory::get_queue(id, rate, 640, type, 0, 0);
+}
+
+FiberLink::FiberLink(uint32_t id, double rate, uint32_t type) : Link(id, FIBER_LINK) {
+    queue = Factory::get_queue(id, rate, 640, type, 0, 0);
+}
+
+
 
 // TODO FIX superclass constructor
 Switch::Switch(uint32_t id, uint32_t switch_type) : Node(id, SWITCH) {
     this->switch_type = switch_type;
 }
+
+
 
 CoreSwitch::CoreSwitch(uint32_t id, uint32_t nq, double rate, uint32_t type) : Switch(id, CORE_SWITCH) {
     for (uint32_t i = 0; i < nq; i++) {

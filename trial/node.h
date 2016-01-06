@@ -8,10 +8,13 @@
 
 #define HOST 0
 #define SWITCH 1
+#define LINK 2
 
 #define CORE_SWITCH 10
 #define AGG_SWITCH 11
 
+#define COPPER_LINK 20
+#define FIBER_LINK 21
 
 using namespace std;
 
@@ -28,6 +31,24 @@ class Host : public Node {
         Queue *queue;
         int host_type;
 };
+
+class Link : public Node {
+    public:
+        Link(uint32_t id, uint32_t link_type);
+        Queue *queue;
+        int link_type;
+};
+
+class CopperLink : public Link {
+    public:
+        CopperLink(uint32_t id, double rate, uint32_t queue_type);
+};
+
+class FiberLink : public Link {
+    public:
+        FiberLink(uint32_t id, double rate, uint32_t queue_type);
+};
+
 
 class Switch : public Node {
     public:
@@ -58,6 +79,7 @@ class l2switch
 //		void recv_pkt(packet pkt);
 
 };
+
 
 class CoreSwitch: public Switch 
 {
